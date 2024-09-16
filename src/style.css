@@ -713,7 +713,8 @@ svg {
   }
   #optionTodoContent > input,
   #optionProjectContent > input {
-    font-size: 15px;
+    font-size: 10px;
+    padding: 5px;
     word-break: break-all;
     width: 190px;
   }
@@ -727,7 +728,12 @@ svg {
 
   #dueDate > input,
   #priority > select {
-    width: fit-content;
+    width: 150px;
+  }
+
+  #dueDate > label,
+  #priority > label {
+    font-size: 16px;
   }
 
   #priority > button {
