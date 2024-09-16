@@ -1,0 +1,669 @@
+/* ОБЩИЕ СТИЛИ */
+
+html {
+  font-size: 16px;
+}
+body {
+  background-color: rgb(11, 104, 104);
+  font-family: Courier New;
+  color: white;
+  /* transition: 0.1s; */
+}
+
+#todoExample {
+  display: none;
+}
+
+.no-todos {
+  text-align: center;
+  color: #888;
+  font-size: 30px;
+}
+
+/* MODAL DETAILS */
+#detailsModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  color: black;
+}
+
+#detailsModal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  padding: 20px;
+  text-transform: capitalize;
+}
+
+#detailsModal-content > div {
+  display: flex;
+  gap: 10px;
+}
+
+#detailsModal-content > h1 {
+  margin: 0;
+}
+#detailsModal-content > div > div:first-child > p {
+  font-weight: bold;
+}
+
+/* МОДАЛЬНОЕ ОКНО */
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  color: black;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  grid-template-rows: 50px 250px;
+  grid-template-areas:
+    "titleCreate titleCreate"
+    "option optionContent";
+}
+
+#titleCreate {
+  grid-area: titleCreate;
+  background-color: #c38d9e;
+  color: white;
+  display: flex;
+  padding-left: 15px;
+  align-items: center;
+  font-size: 15px;
+}
+
+#option {
+  grid-area: option;
+  display: flex;
+  flex-direction: column;
+  background-color: #eee;
+  padding: 20px;
+  gap: 15px;
+}
+
+#option > button {
+  background-color: #eee;
+  border: 0px;
+  text-align: start;
+  opacity: 0.7;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.4s;
+}
+
+#option > button:hover {
+  opacity: 1;
+}
+
+#optionContent {
+  overflow: hidden;
+}
+#optionTodoContent,
+#optionProjectContent {
+  grid-area: optionContent;
+  padding: 20px;
+  font-size: larger;
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+#optionTodoContent > input,
+#optionProjectContent > input {
+  outline: none;
+  border: 0;
+  font-size: 20px;
+  opacity: 0.8;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#optionTodoContent > input:hover,
+#optionProjectContent > input:hover {
+  opacity: 1;
+}
+
+#optionProjectContent {
+  display: none;
+}
+
+#optionTodoContent > div:last-child,
+#optionProjectContent > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+#priority {
+  display: flex;
+  gap: 11px;
+}
+
+#priority > button {
+  margin-right: auto;
+  background-color: white;
+  color: rgba(59, 163, 149, 0.5);
+  width: 100px;
+  height: 30px;
+  /* margin-left: 250px; */
+  border: 2px solid rgba(59, 163, 149, 0.5);
+  border-radius: 3px;
+  padding: 5px;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+label {
+  font-size: 20px;
+  opacity: 0.8;
+  /* font-family: none; */
+}
+
+#priority > button:hover {
+  background-color: rgba(59, 163, 149, 0.5);
+  color: white;
+}
+
+#dueDate > input {
+  border: 2px solid rgba(59, 163, 149, 0.5);
+  border-radius: 3px;
+  padding: 5px;
+  cursor: pointer;
+  color: rgba(59, 163, 149, 0.5);
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.4s;
+}
+
+#dueDate > input:hover {
+  background-color: rgba(59, 163, 149, 0.5);
+  color: white;
+}
+
+#priority > select {
+  border: 2px solid rgba(59, 163, 149, 0.5);
+  border-radius: 3px;
+  padding: 5px;
+  cursor: pointer;
+  color: rgba(59, 163, 149, 0.5);
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.4s;
+}
+
+#priority > select:hover {
+  background-color: rgba(59, 163, 149, 0.5);
+  color: white;
+}
+
+#priority > button {
+  width: 150px;
+}
+/* ДЕКСТОПНЫЕ СТИЛИ */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+body > div {
+  border: 2px solid grey;
+  display: grid;
+  width: 1501px;
+  height: 750px;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 50px auto;
+  grid-template-areas:
+    "header header"
+    "sidebar content";
+  /* transition: 0.5s; */
+}
+
+.header {
+  display: flex;
+  background-color: #c38d9e;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 20px 10px 20px;
+  grid-area: header;
+  cursor: pointer;
+}
+
+.header > h1 {
+  font-size: 2rem;
+}
+
+.note-icon {
+  display: flex;
+}
+
+.content {
+  background-color: white;
+  grid-area: content;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.sidebar {
+  background-color: #eee;
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  min-width: 70px;
+  padding-bottom: 10px;
+  border-right: 1px solid rgb(121, 116, 116, 0.5);
+  justify-content: space-between;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: none;
+  padding-bottom: 30px;
+  justify-content: space-around;
+  /* height: calc(100% - 40px - 4rem); */
+  height: 600px;
+  /* transition: 0.5s; */
+}
+
+.project {
+  display: flex;
+  justify-content: space-between;
+  background-color: #eee;
+  border: 0;
+  padding: 10px 20px;
+  align-items: center;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.project:hover > h4 {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.project:hover {
+  background-color: #ddd7d7;
+  border-radius: 10%;
+}
+
+.active {
+  background-color: #ddd7d7;
+  border-radius: 10%;
+}
+
+.project > h4 {
+  color: rgb(31, 30, 30);
+  opacity: 0.5;
+  font-size: 1rem;
+}
+
+.count {
+  background-color: #c38d9e;
+  border-radius: 30%;
+  height: 20px;
+  width: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  padding-top: 2px;
+  color: white;
+  padding: 7px;
+}
+
+.plus {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  align-self: center;
+  background-color: #c38d9e;
+  color: white;
+  /* border: 3px solid #c38d9e; */
+  font-size: 40px;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.plus:hover {
+  /* border: 3px solid #c38d9e; */
+  color: #c38d9e;
+  background-color: #eee;
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(236, 230, 230);
+  padding: 5px;
+  color: black;
+
+  min-width: 300px;
+  transition: 1s;
+}
+
+.high {
+  border-left: 6px solid red;
+}
+
+.medium {
+  border-left: 6px solid rgb(241, 241, 22);
+}
+
+.low {
+  border-left: 6px solid green;
+}
+.done > .todoPart > .title {
+  text-decoration: line-through;
+  text-decoration-color: rgb(124, 122, 122);
+}
+
+.todo:hover {
+  box-shadow: 5px 5px 5px rgb(131, 128, 128);
+}
+
+.todoPart {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.delete,
+.edit,
+.checkBox {
+  background-color: rgb(236, 230, 230);
+  border: 0;
+  fill: rgb(137, 92, 158);
+  cursor: pointer;
+}
+
+.todo > .todoPart:first-child > .checkBox > svg:last-child {
+  display: none;
+}
+
+svg {
+  transition: 0.5s;
+}
+
+.checkBox:hover svg,
+.edit:hover svg,
+.delete:hover svg {
+  fill: rgba(59, 163, 149, 0.5);
+}
+
+.details {
+  color: rgba(59, 163, 149, 0.5);
+  background-color: rgb(236, 230, 230);
+  border: 1px solid rgba(59, 163, 149, 0.5);
+  border-radius: 10%;
+  padding: 3px 6px;
+  font-size: 10px;
+  font-weight: bold;
+  font-family: "MyFont";
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.details:hover {
+  background-color: rgba(59, 163, 149, 0.5);
+  color: rgb(236, 230, 230);
+}
+
+.menu {
+  opacity: 0;
+}
+
+@media (max-width: 1501px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  body > div {
+    width: 100%;
+    height: 100%;
+  }
+
+  .header {
+    font-size: 1.5rem;
+  }
+  .sidebar {
+    width: 25vw;
+    border-right: 0.0625rem solid rgb(121, 116, 116, 0.5);
+    border-bottom: 0.0625rem solid rgb(121, 116, 116, 0.5);
+    padding-bottom: 1.25rem;
+    font-size: 1rem;
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    overflow-y: scroll;
+    height: 750px;
+  }
+
+  .content {
+    min-width: 250px;
+  }
+
+  .modal-content {
+    grid-template-rows: 50px 350px;
+  }
+
+  #optionTodoContent > input,
+  #optionProjectContent > input {
+    font-size: 15px;
+    word-break: break-all;
+    width: 350px;
+  }
+
+  #dueDate,
+  #priority {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #dueDate > input,
+  #priority > select {
+    width: fit-content;
+  }
+
+  #priority > button {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 1;
+    margin: 0;
+    font-size: 16px;
+  }
+
+  body > div {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .header > h1 {
+    font-size: 2rem;
+  }
+
+  .menu {
+    opacity: 1;
+    margin-left: auto;
+    background-color: #c38d9e;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .todo {
+    font-size: 0.7rem;
+  }
+
+  .details {
+    font-size: 0.5rem;
+  }
+
+  body > div {
+    border: 2px solid grey;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3.125rem 1fr;
+    grid-template-areas:
+      "header"
+      "content";
+    width: 100%;
+    height: 100%;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .menu-icon:hover {
+    fill: rgba(255, 255, 255, 0.5);
+  }
+
+  .opened {
+    rotate: 180deg;
+  }
+
+  .show-sidebar {
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    padding: 0.625rem;
+    border-right: 0.0625rem solid rgb(121, 116, 116, 0.5);
+    border-bottom: 0.0625rem solid rgb(121, 116, 116, 0.5);
+    padding-bottom: 1.25rem;
+    margin-top: 3.125rem;
+    margin-bottom: 3.125rem;
+    font-size: 1rem;
+    height: calc(100vh - 3.125rem * 1.8);
+    position: fixed;
+    width: 50vw;
+    transition: 0.5s;
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    width: 95%;
+  }
+
+  .show-sidebar > button > h4 {
+    font-size: 0.8rem;
+  }
+
+  .project {
+    border: 0;
+    padding: 0.5rem 0.5rem;
+    align-items: center;
+  }
+
+  .count {
+    border-radius: 1rem;
+    justify-content: center;
+    align-items: center;
+    height: 0.5rem;
+    width: 0.5rem;
+    font-size: 0.5rem;
+    font-weight: bold;
+    padding-top: 0.125rem;
+    color: white;
+    padding: 0.5rem;
+  }
+
+  .plus {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    align-self: center;
+    font-weight: bold;
+    border: 0;
+  }
+
+  /* MODAL STYLES */
+
+  .modal-content {
+    grid-template-rows: 50px 350px;
+  }
+
+  #optionTodoContent > input,
+  #optionProjectContent > input {
+    font-size: 15px;
+    word-break: break-all;
+    width: 350px;
+  }
+
+  #dueDate,
+  #priority {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #dueDate > input,
+  #priority > select {
+    width: fit-content;
+  }
+
+  #priority > button {
+    margin-left: 0;
+  }
+}
