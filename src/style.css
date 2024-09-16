@@ -593,7 +593,7 @@ svg {
     margin-top: 3.125rem;
     margin-bottom: 3.125rem;
     font-size: 1rem;
-    height: calc(100vh - 3.125rem * 1.8);
+    height: calc(100vh - 3.125rem * 3);
     position: fixed;
     width: 50vw;
     transition: 0.5s;
