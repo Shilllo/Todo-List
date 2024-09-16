@@ -92,7 +92,7 @@ body {
   width: 80%; /* Could be more or less, depending on screen size */
   display: grid;
   grid-template-columns: 0.3fr 1fr;
-  grid-template-rows: 50px 250px;
+  grid-template-rows: 50px 300px;
   grid-template-areas:
     "titleCreate titleCreate"
     "option optionContent";
@@ -137,6 +137,8 @@ body {
   cursor: pointer;
   font-size: 20px;
   transition: 0.5s;
+  color: rgba(24, 58, 53, 0.5);
+  font-weight: bolder;
 }
 
 #option > button:hover {
@@ -151,6 +153,7 @@ body {
 #optionProjectContent {
   grid-area: optionContent;
   padding: 20px;
+
   font-size: larger;
   gap: 30px;
   display: flex;
@@ -165,10 +168,13 @@ body {
 #optionTodoContent > input,
 #optionProjectContent > input {
   outline: none;
-  border: 0;
+  border: 2px solid rgba(59, 163, 149, 0.5);
+  border-radius: 5px;
   font-size: 20px;
   opacity: 0.8;
   font-family: "Courier New", Courier, monospace;
+  color: rgba(4, 65, 57, 0.5);
+  padding: 5px;
 }
 
 #optionTodoContent > input:hover,
@@ -709,7 +715,7 @@ svg {
   #optionProjectContent > input {
     font-size: 15px;
     word-break: break-all;
-    width: 350px;
+    width: 190px;
   }
 
   #dueDate,
