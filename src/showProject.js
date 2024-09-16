@@ -11,7 +11,7 @@ export function showProject(todos, instance) {
   for (let j = 0; j < todos.length; j++) {
     let todo = document.querySelector("#todoExample").cloneNode(true);
     todo.children[0].children[1].textContent = todos[j].title;
-    todo.children[1].children[1].textContent = todos[j].date;
+    todo.children[1].children[1].textContent = todos[j].date.slice(5);
 
     if (todos[j].status) {
       todo.classList.add("done");

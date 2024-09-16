@@ -40,11 +40,11 @@ body {
   margin: 15% auto;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   text-transform: capitalize;
 }
 
-#detailsModal-content > div {
+#detailsModal-content > div:last-child {
   display: flex;
   gap: 10px;
 }
@@ -54,6 +54,19 @@ body {
 }
 #detailsModal-content > div > div:first-child > p {
   font-weight: bold;
+}
+
+#detailsModal-content > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#detailsModal-close {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 /* МОДАЛЬНОЕ ОКНО */
@@ -93,8 +106,19 @@ body {
   padding-left: 15px;
   align-items: center;
   font-size: 15px;
+  justify-content: space-between;
+  padding-right: 20px;
 }
 
+#titleCreate > div {
+  font-size: 50px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+#titleCreate > div:hover {
+  opacity: 0.8;
+}
 #option {
   grid-area: option;
   display: flex;
@@ -350,9 +374,9 @@ body > div {
 }
 
 .plus {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
+  width: 100px;
+  height: 50px;
+  border-radius: 10%;
   align-self: center;
   background-color: #c38d9e;
   color: white;
@@ -381,6 +405,15 @@ body > div {
   transition: 1s;
 }
 
+.title {
+  width: 90px;
+  overflow: hidden;
+}
+
+.todoPart {
+  gap: 90px;
+}
+
 .high {
   border-left: 6px solid red;
 }
@@ -407,6 +440,15 @@ body > div {
   align-items: center;
 }
 
+.title {
+  width: 90px;
+  overflow: hidden;
+}
+
+.todoPart {
+  gap: 10px;
+}
+
 .delete,
 .edit,
 .checkBox {
@@ -414,6 +456,7 @@ body > div {
   border: 0;
   fill: rgb(137, 92, 158);
   cursor: pointer;
+  /* width: 20px; */
 }
 
 .todo > .todoPart:first-child > .checkBox > svg:last-child {
@@ -590,10 +633,11 @@ svg {
     border-right: 0.0625rem solid rgb(121, 116, 116, 0.5);
     border-bottom: 0.0625rem solid rgb(121, 116, 116, 0.5);
     padding-bottom: 1.25rem;
-    margin-top: 3.125rem;
-    margin-bottom: 3.125rem;
+    /* margin-top: 3.125rem;
+    margin-bottom: 3.125rem; */
+    transform: translateY(0%);
     font-size: 1rem;
-    height: calc(100vh - 3.125rem * 3);
+    height: calc(100vh - 3.125rem * 2);
     position: fixed;
     width: 50vw;
     transition: 0.5s;
@@ -628,22 +672,32 @@ svg {
     color: white;
     padding: 0.5rem;
   }
-
   .plus {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    align-self: center;
-    font-weight: bold;
-    border: 0;
+    font-size: 20px;
   }
 
   /* MODAL STYLES */
 
   .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
     grid-template-rows: 50px 350px;
+    grid-template-areas:
+      "titleCreate titleCreate"
+      "option optionContent";
   }
 
+  #option > button {
+    font-size: 12px;
+  }
+
+  #option {
+    padding: 20px 5px 20px 5px;
+  }
   #optionTodoContent > input,
   #optionProjectContent > input {
     font-size: 15px;
@@ -665,5 +719,41 @@ svg {
 
   #priority > button {
     margin-left: 0;
+  }
+
+  #titleCreate {
+    grid-area: titleCreate;
+    background-color: #c38d9e;
+    color: white;
+    display: flex;
+    padding-left: 15px;
+    align-items: center;
+    font-size: 15px;
+    justify-content: space-between;
+    padding-right: 20px;
+  }
+
+  #titleCreate > h1 {
+    margin: 0;
+    font-size: 20px;
+  }
+  #titleCreate > div {
+    font-size: 50px;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+
+  #date {
+    width: 34px;
+    padding: 3px;
+  }
+
+  .todoPart:last-child {
+    gap: 2px;
+  }
+
+  .edit,
+  .delete {
+    padding: 3px;
   }
 }

@@ -39,6 +39,12 @@ export function modalStart(instance) {
   let addTodo = document.querySelector("#addTodo");
   let createProject = document.querySelector("#createProject");
 
+  document
+    .querySelector("#titleCreate")
+    .children[1].addEventListener("click", () => {
+      document.querySelector(".modal").style.display = "none";
+    });
+
   addTodo.addEventListener("click", function () {
     let title = document.querySelector("#titleInput").value;
     let details = document.querySelector("#detailsInput").value;
@@ -53,7 +59,8 @@ export function modalStart(instance) {
         priority: priority.value,
       });
       showProject(instance.getStorage()[instance.currentProject]);
-      modalNew.style.display = "none";
+      document.querySelector(".modal").style.display = "none";
+      document.querySelector(".sidebar").classList.remove("show-sidebar");
       document.querySelector("#titleInput").value = "";
       document.querySelector("#detailsInput").value = "";
       document.querySelector("#priority").children[1].value = "low";
@@ -82,7 +89,8 @@ export function modalStart(instance) {
       document.querySelector(".projects").appendChild(newProject);
       document.querySelector("#titleProjectInput").value = "";
     }
-    modalNew.style.display = "none";
+    document.querySelector(".modal").style.display = "none";
+    document.querySelector(".sidebar").classList.remove("show-sidebar");
     createEventsProject(instance);
     showProject([]);
 

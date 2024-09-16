@@ -24,4 +24,10 @@ export function detailsModal(instance) {
       detailsModal.style.display = "none";
     }
   };
+
+  document
+    .querySelector("#detailsModal-close")
+    .addEventListener("click", () => {
+      detailsModal.style.display = "none";
+    });
 }
