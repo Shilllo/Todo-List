@@ -20,8 +20,8 @@ export function modalStart(instance) {
     }
   };
 
-  let optionTodo = document.querySelector("#optionTodo");
-  let optionProject = document.querySelector("#optionProject");
+  let optionTodo = document.querySelector(".optionTodo");
+  let optionProject = document.querySelector(".optionProject");
 
   let optionTodoContent = document.querySelector("#optionTodoContent");
   let optionProjectContent = document.querySelector("#optionProjectContent");
@@ -29,11 +29,15 @@ export function modalStart(instance) {
   optionTodo.addEventListener("click", function () {
     optionTodoContent.style.display = "flex";
     optionProjectContent.style.display = "none";
+    optionTodo.classList.add("activeOption");
+    optionProject.classList.remove("activeOption");
   });
 
   optionProject.addEventListener("click", function () {
     optionTodoContent.style.display = "none";
     optionProjectContent.style.display = "flex";
+    optionProject.classList.add("activeOption");
+    optionTodo.classList.remove("activeOption");
   });
 
   let addTodo = document.querySelector("#addTodo");
