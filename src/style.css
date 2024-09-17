@@ -403,8 +403,9 @@ body > div {
 
 .plus:hover {
   /* border: 3px solid #c38d9e; */
-  color: #c38d9e;
-  background-color: #eee;
+  /* color: #c38d9e;
+  background-color: #eee; */
+  box-shadow: 5px 5px 5px rgb(131, 128, 128);
 }
 
 .todo {
