@@ -92,4 +92,9 @@ export class Storage {
     localStorage.setItem("storage", JSON.stringify(this.storage));
     refreshCounts(this);
   }
+
+  deleteProject(project) {
+    delete this.storage[project];
+    localStorage.setItem("storage", JSON.stringify(this.storage));
+  }
 }

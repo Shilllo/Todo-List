@@ -1,6 +1,8 @@
 import { checkBox } from "./checkBox";
 import { detailsModal } from "./detailsModal";
 import { deleteBtnEvent } from "./deleteBtnEvent";
+import { showProject } from "./showProject";
+import { showAllProjects } from "./showAllProjects";
 export function createEventsProject(instance) {
   let projects = document.querySelectorAll(".project");
 
@@ -21,6 +23,20 @@ export function createEventsProject(instance) {
         text.textContent = "No todos";
         text.classList.add("no-todos");
         content.appendChild(text);
+
+        // let deleteProject = document.createElement("button");
+        // deleteProject.textContent = "Delete Project";
+        // content.appendChild(deleteProject);
+
+        // deleteProject.addEventListener("click", function () {
+        //   instance.deleteProject(instance.currentProject);
+        //   showProject(instance.getStorage()["Today"], instance);
+        //   showAllProjects(instance);
+
+        //   checkBox(instance);
+        //   detailsModal(instance);
+        //   deleteBtnEvent(instance);
+        // });
       } else {
         for (let j = 0; j < todos.length; j++) {
           let todo = document.querySelector("#todoExample").cloneNode(true);
