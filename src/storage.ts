@@ -8,6 +8,9 @@ import { showProject } from "./showProject";
 import { refreshCounts } from "./refreshCounts";
 import { showAllProjects } from "./showAllProjects";
 export class Storage {
+  storage: { [key: string]: any } = {};
+
+  currentProject: string = "";
   constructor() {
     this.storage = {
       Today: [
@@ -49,13 +52,13 @@ export class Storage {
     this.currentProject = "Today";
 
     if (localStorage.getItem("storage")) {
-      this.storage = JSON.parse(localStorage.getItem("storage"));
+      this.storage = JSON.parse(localStorage.getItem("storage") ?? "{}");
     } else {
       localStorage.setItem("storage", JSON.stringify(this.storage));
     }
 
     showAllProjects(this);
-    showProject(this.storage[this.currentProject], this);
+    showProject(this.storage[this.currentProject as keyof typeof this.storage]);
 
     checkBox(this);
     deleteBtnEvent(this);
@@ -66,13 +69,13 @@ export class Storage {
     refreshCounts(this);
   }
 
-  addProject(project) {
+  addProject(project: string) {
     this.storage[project] = [];
     localStorage.setItem("storage", JSON.stringify(this.storage));
     refreshCounts(this);
   }
 
-  addTodo(project, todo) {
+  addTodo(project: string, todo: object) {
     this.storage[project].push(todo);
     localStorage.setItem("storage", JSON.stringify(this.storage));
     refreshCounts(this);
@@ -82,18 +85,18 @@ export class Storage {
     return this.storage;
   }
 
-  refreshStatus(project, index) {
+  refreshStatus(project: string, index: number) {
     this.storage[project][index].status = !this.storage[project][index].status;
     localStorage.setItem("storage", JSON.stringify(this.storage));
   }
 
-  deleteTodo(project, index) {
+  deleteTodo(project: string, index: number) {
     this.storage[project].splice(index, 1);
     localStorage.setItem("storage", JSON.stringify(this.storage));
     refreshCounts(this);
   }
 
-  deleteProject(project) {
+  deleteProject(project: string) {
     delete this.storage[project];
     localStorage.setItem("storage", JSON.stringify(this.storage));
   }

@@ -1,6 +1,9 @@
-export function showAllProjects(instance) {
+export function showAllProjects(instance: any) {
   let sidebar = document.querySelector(".projects");
-  sidebar.innerHTML = "";
+
+  if (sidebar) {
+    sidebar.innerHTML = "";
+  }
 
   let projects = instance.getStorage();
   for (let i in projects) {
@@ -21,6 +24,8 @@ export function showAllProjects(instance) {
       project.classList.add("active");
     }
 
-    sidebar.appendChild(project);
+    if (sidebar) {
+      sidebar.appendChild(project);
+    }
   }
 }

@@ -1,7 +1,7 @@
 import { checkBox } from "./checkBox";
 import { showProject } from "./showProject";
 import { detailsModal } from "./detailsModal";
-export function deleteBtnEvent(instance) {
+export function deleteBtnEvent(instance: any) {
   let deleteBtnArray = document.querySelectorAll(".delete");
   for (let i = 1; i < deleteBtnArray.length; i++) {
     deleteBtnArray[i].addEventListener("click", function () {

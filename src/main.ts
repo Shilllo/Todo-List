@@ -3,4 +3,4 @@ import { Storage } from "./storage";
 
 let storage = new Storage();
 
-localStorage.clear();
+// localStorage.clear();
