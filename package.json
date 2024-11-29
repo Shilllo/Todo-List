@@ -1,17 +1,33 @@
 {
-  "name": "todolistik",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite --host",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.1.1",
-    "vite": "^5.4.1"
-  }
+    "name": "todolistik",
+    "private": true,
+    "version": "0.0.0",
+    "main": "main.js",
+    "scripts": {
+        "dev": "vite --host",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist",
+        "build": "electron-builder",
+        "preview": "vite preview",
+        "electron": "electron ."
+    },
+    "win": {
+        "icon": "./src/notepad.ico"
+    },
+    "build": {
+        "appId": "com.example.app",
+        "productName": "TodoList",
+        "win": {
+            "target": "nsis"
+        },
+        "directories": {
+            "output": "dist"
+        }
+    },
+    "devDependencies": {
+        "electron": "^33.2.1",
+        "electron-builder": "^25.1.8",
+        "gh-pages": "^6.1.1",
+        "vite": "^5.4.1"
+    }
 }
